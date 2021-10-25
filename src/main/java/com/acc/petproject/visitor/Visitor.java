@@ -1,0 +1,50 @@
+package com.acc.petproject.visitor;
+
+
+import com.acc.petproject.adoption.Adoption;
+import com.acc.petproject.donation.Donation;
+import com.acc.petproject.review.Review;
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
+
+import javax.persistence.*;
+import java.util.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Slf4j
+@Entity
+public class Visitor {
+    @Id
+    @SequenceGenerator(name = "visitor_seq", sequenceName = "visitor_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visitor_seq")
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String email;
+    private String password;
+    private String phoneNumber;
+    private Gender gender;
+    private String birthDate;
+    //TODO: de verificat nume din doua
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name ="city", column = @Column(name = "city")),
+            @AttributeOverride(name ="country", column = @Column(name = "country")),
+            @AttributeOverride(name ="street", column = @Column(name = "street")),
+            @AttributeOverride(name ="number", column = @Column(name = "number")),
+            @AttributeOverride(name ="zip", column = @Column(name = "zip"))
+    })
+    private Address address;
+    @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
+    private List<Adoption> adoptions;
+    @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
+    private List<Donation> donations;
+    @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
+
+}
