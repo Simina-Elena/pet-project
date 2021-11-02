@@ -1,7 +1,7 @@
 package com.acc.petproject.adoption;
 
 public enum AdoptionStatus {
-    ONGOING,
+    PENDING,
     ACCEPTED,
     DECLINED,
     CANCELLED

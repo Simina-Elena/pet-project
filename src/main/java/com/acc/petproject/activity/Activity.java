@@ -17,6 +17,7 @@ public class Activity {
     @SequenceGenerator(name = "activity_seq", sequenceName = "activity_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "activity_seq")
     private Long id;
+    @Enumerated(EnumType.STRING)
     private ActivityType activityType;
     private int capacity;
     @ManyToOne(fetch = FetchType.LAZY)

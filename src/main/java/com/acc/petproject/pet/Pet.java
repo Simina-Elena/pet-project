@@ -1,9 +1,12 @@
 package com.acc.petproject.pet;
 
 import com.acc.petproject.shelter.Shelter;
+import com.acc.petproject.visitor.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,12 +20,16 @@ public class Pet {
     private Long id;
     private String name;
     private String pictureLink;
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
     private String race;
     private String age;
     private String color;
     private String description;
+    private LocalDate joinedDate;
     @ManyToOne
+    @JoinColumn(name = "shelter_id")
+    @JsonIgnore
     private Shelter shelter;
     private boolean isAdopted;
 }
