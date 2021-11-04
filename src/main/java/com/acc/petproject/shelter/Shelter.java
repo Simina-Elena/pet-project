@@ -29,12 +29,22 @@ public class Shelter {
     private Long id;
     @Column(nullable = false)
     private String name;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name ="city", column = @Column(name = "city")),
+            @AttributeOverride(name ="country", column = @Column(name = "country")),
+            @AttributeOverride(name ="street", column = @Column(name = "street")),
+            @AttributeOverride(name ="number", column = @Column(name = "number")),
+            @AttributeOverride(name ="zip", column = @Column(name = "zip"))
+    })
     private Address address;
     @Column(length = 1000)
     private String pictureLink;
     @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String phoneNumber;
     private LocalDate joinedDate = LocalDate.now();
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL)
