@@ -18,10 +18,5 @@ public class ShelterServiceImpl implements ShelterService{
         return shelterRepository.findAll();
     }
 
-    @Override
-    public void addShelter(Shelter shelter) {
-        shelter.setJoinedDate(LocalDate.now());
-        shelterRepository.save(shelter);
-    }
 
 }

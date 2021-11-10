@@ -4,6 +4,7 @@ package com.acc.petproject.visitor;
 import com.acc.petproject.adoption.Adoption;
 import com.acc.petproject.donation.Donation;
 import com.acc.petproject.review.Review;
+import com.acc.petproject.security.model.Role;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,6 +46,16 @@ public class Visitor {
     private List<Donation> donations;
     @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
     private List<Review> reviews;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "visitor_roles",
+            joinColumns = @JoinColumn(name = "visitor_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
-
+    public Visitor(String username, String email, String password, String phoneNumber) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+    }
 }
