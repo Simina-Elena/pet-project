@@ -12,4 +12,5 @@ public interface PetService {
     List<Pet> getAllPetsByShelterId(Long shelterId);
     Pet addPet(Pet pet, Long shelterId);
     Pet editPet(Long petId, PetDto petDto);
+    void deletePet(Long petId);
 }

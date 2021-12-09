@@ -48,5 +48,8 @@ public class PetServiceImpl implements PetService{
         return null;
     }
 
-
+    @Override
+    public void deletePet(Long petId) {
+        petRepository.delete(petRepository.findById(petId).get());
+    }
 }
