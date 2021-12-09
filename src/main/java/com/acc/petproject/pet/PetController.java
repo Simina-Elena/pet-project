@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping(value = "/api/pet")
+@CrossOrigin
 public class PetController {
 
     private final PetService petService;

@@ -13,4 +13,5 @@ public interface ShelterRepository extends JpaRepository<Shelter, Long> {
     Boolean existsByUsername(String name);
     Boolean existsByEmail(String email);
 
+
 }

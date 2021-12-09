@@ -36,6 +36,7 @@ public class PetServiceImpl implements PetService{
         pet1.setDescription(pet.getDescription());
         pet1.setPictureLink(pet.getPictureLink());
         pet1.setJoinedDate(LocalDate.now());
+        pet1.setGender(pet.getGender());
         petRepository.save(pet1);
         return pet1;
     }

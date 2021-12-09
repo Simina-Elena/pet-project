@@ -32,4 +32,14 @@ public class Pet {
     @JsonIgnore
     private Shelter shelter;
     private boolean isAdopted;
+
+    public Pet(String name, String pictureLink, Gender gender, String race, String age, String color, String description) {
+        this.name = name;
+        this.pictureLink = pictureLink;
+        this.gender = gender;
+        this.race = race;
+        this.age = age;
+        this.color = color;
+        this.description = description;
+    }
 }

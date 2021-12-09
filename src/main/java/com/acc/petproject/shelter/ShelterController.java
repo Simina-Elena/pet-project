@@ -1,7 +1,11 @@
 package com.acc.petproject.shelter;
 
+import com.acc.petproject.security.payload.response.MessageResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,9 +18,21 @@ import java.util.List;
 public class ShelterController {
     private ShelterService shelterService;
 
-    @GetMapping("/list")
+    @GetMapping(path="/list")
     public List<Shelter> getAllShelters() {
         return shelterService.getAllShelters();
     }
+
+    @GetMapping(path="/profile/{username}")
+    public ResponseEntity<Shelter> getShelterProfile(@PathVariable(value= "username") String username ) {
+        return new ResponseEntity<>(shelterService.findShelterByUsername(username), HttpStatus.OK);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logoutShelter() {
+        SecurityContextHolder.clearContext();
+        return ResponseEntity.ok(new MessageResponse("Log out successful!"));
+    }
+
 
 }
