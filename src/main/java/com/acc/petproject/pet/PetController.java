@@ -30,4 +30,15 @@ public class PetController {
     public void deletePet(@PathVariable(value = "petId") Long petId) {
         petService.deletePet(petId);
     }
+
+    @PatchMapping(value = "/edit/{petId}")
+    public ResponseEntity<Pet> editPet(@PathVariable(value = "petId") Long petId, @RequestBody PetDto petDto) {
+        Pet editedPet = petService.editPet(petId, petDto);
+        return new ResponseEntity<>(editedPet, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{petId}")
+    public ResponseEntity<Pet> getPetByPetId(@PathVariable(value = "petId") Long petId) {
+        return new ResponseEntity<>(petService.getPetByPetId(petId), HttpStatus.OK);
+    }
 }

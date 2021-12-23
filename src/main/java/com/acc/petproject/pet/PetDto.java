@@ -22,9 +22,6 @@ public class PetDto {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("pictureLink")
-    private String pictureLink;
-
     @JsonProperty("gender")
     private Gender gender;
 
@@ -39,9 +36,6 @@ public class PetDto {
 
     @JsonProperty("description")
     private String description;
-
-    @JsonProperty("shelterId")
-    private Long shelterId;
 
     @JsonProperty("isAdopted")
     private boolean isAdopted;

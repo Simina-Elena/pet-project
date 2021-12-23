@@ -43,13 +43,27 @@ public class PetServiceImpl implements PetService{
 
     @Override
     public Pet editPet(Long petId, PetDto petDto) {
-        Pet petToUpdate = petRepository.getById(petId);
+        Pet petToUpdate = petRepository.findById(petId).get();
 
-        return null;
+        petToUpdate.setName(petDto.getName());
+        petToUpdate.setGender(petDto.getGender());
+        petToUpdate.setDescription(petDto.getDescription());
+        petToUpdate.setAdopted(petDto.isAdopted());
+        petToUpdate.setColor(petDto.getColor());
+        petToUpdate.setAge(petDto.getAge());
+        petToUpdate.setRace(petDto.getRace());
+        petRepository.save(petToUpdate);
+
+        return petToUpdate;
     }
 
     @Override
     public void deletePet(Long petId) {
         petRepository.delete(petRepository.findById(petId).get());
+    }
+
+    @Override
+    public Pet getPetByPetId(Long petId) {
+        return petRepository.findById(petId).get();
     }
 }
