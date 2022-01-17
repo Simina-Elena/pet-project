@@ -6,14 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
+
 public class PetDto {
 
     @JsonProperty("id")
@@ -36,6 +38,9 @@ public class PetDto {
 
     @JsonProperty("description")
     private String description;
+
+    @JsonProperty("date")
+    private LocalDate joinedDate;
 
     @JsonProperty("isAdopted")
     private boolean isAdopted;

@@ -3,10 +3,10 @@ package com.acc.petproject.pet;
 import com.acc.petproject.shelter.Shelter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
 public interface PetService {
 
     List<Pet> getAllPetsByShelterId(Long shelterId);
