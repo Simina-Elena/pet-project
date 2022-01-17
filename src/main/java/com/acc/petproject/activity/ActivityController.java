@@ -9,21 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/activity")
+@RequestMapping(value = "/api/activities")
 @AllArgsConstructor
 @CrossOrigin
 @Slf4j
 public class ActivityController {
     private ActivityService activityService;
 
-    @GetMapping("/list")
-    public List<Activity> getAllActivities() {
-        return activityService.getAllActivities();
+    @GetMapping()
+    public List<Activity> getAllActivities(@RequestParam(value = "shelterId") Long shelterId) {
+        return activityService.getAllActivitiesByShelterId(shelterId);
     }
 
-    @PostMapping(value = "/add/{shelterId}")
-    public void addActivity(@RequestBody Activity activity, @PathVariable(value="shelterId") Long shelterId) {
-        activityService.addActivity(activity, shelterId);
+    @PostMapping()
+    public void addActivity(@RequestBody ActivityDto activityDto) {
+        activityService.addActivity(activityDto);
     }
-
 }

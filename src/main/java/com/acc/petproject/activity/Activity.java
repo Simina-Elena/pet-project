@@ -2,6 +2,7 @@ package com.acc.petproject.activity;
 
 import com.acc.petproject.reservation.Reservation;
 import com.acc.petproject.shelter.Shelter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,8 @@ public class Activity {
     private ActivityType activityType;
     private int capacity;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shelter_id")
+    @JsonIgnore
     private Shelter shelter;
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
     private List<Reservation> reservations;

@@ -16,17 +16,17 @@ public class ActivityServiceImpl implements ActivityService{
     private ShelterRepository shelterRepository;
 
     @Override
-    public List<Activity> getAllActivities() {
-        return activityRepository.findAll();
+    public List<Activity> getAllActivitiesByShelterId(Long shelterId) {
+        return activityRepository.getAllByShelterId(shelterId);
     }
 
     @Override
-    public void addActivity(Activity activity, Long shelterId) {
-        Optional<Shelter> shelter = shelterRepository.findById(shelterId);
+    public void addActivity(ActivityDto activityDto) {
+        Optional<Shelter> shelter = shelterRepository.findById(activityDto.getShelterId());
         Activity activity1 = new Activity();
         activity1.setShelter(shelter.get());
-        activity1.setCapacity(activity.getCapacity());
-        activity1.setActivityType(activity.getActivityType());
+        activity1.setCapacity(activityDto.getCapacity());
+        activity1.setActivityType(activityDto.getActivityType());
         activityRepository.save(activity1);
     }
 }

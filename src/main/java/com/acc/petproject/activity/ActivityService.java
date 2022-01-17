@@ -6,6 +6,6 @@ import java.util.List;
 
 @Component
 public interface ActivityService {
-    List<Activity> getAllActivities();
-    void addActivity(Activity activity, Long shelterId);
+    List<Activity> getAllActivitiesByShelterId(Long shelterId);
+    void addActivity(ActivityDto activityDto);
 }
