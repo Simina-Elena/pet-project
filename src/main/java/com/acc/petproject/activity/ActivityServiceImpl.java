@@ -17,7 +17,7 @@ public class ActivityServiceImpl implements ActivityService{
 
     @Override
     public List<Activity> getAllActivitiesByShelterId(Long shelterId) {
-        return activityRepository.getAllByShelterId(shelterId);
+        return activityRepository.getAllByShelterIdOrderById(shelterId);
     }
 
     @Override
@@ -29,4 +29,31 @@ public class ActivityServiceImpl implements ActivityService{
         activity1.setActivityType(activityDto.getActivityType());
         activityRepository.save(activity1);
     }
+
+    @Override
+    public void deleteActivity(Long activityId) {
+        activityRepository.delete(activityRepository.findById(activityId).get());
+    }
+
+    @Override
+    public Activity increaseCapacity(Long activityId) {
+        Activity activity = activityRepository.findById(activityId).get();
+        activity.increaseCapacity();
+        activityRepository.save(activity);
+        return activity;
+    }
+
+    @Override
+    public Activity decreaseCapacity(Long activityId) {
+        Activity activity = activityRepository.findById(activityId).get();
+        activity.decreaseCapacity();;
+        activityRepository.save(activity);
+        return activity;
+    }
+
+    @Override
+    public Activity getActivityByActivityId(Long activityId) {
+        return activityRepository.findById(activityId).get();
+    }
+
 }

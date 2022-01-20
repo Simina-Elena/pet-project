@@ -8,4 +8,8 @@ import java.util.List;
 public interface ActivityService {
     List<Activity> getAllActivitiesByShelterId(Long shelterId);
     void addActivity(ActivityDto activityDto);
+    void deleteActivity(Long activityId);
+    Activity increaseCapacity(Long activityId);
+    Activity decreaseCapacity(Long activityId);
+    Activity getActivityByActivityId(Long activityId);
 }

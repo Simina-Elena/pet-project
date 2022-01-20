@@ -53,7 +53,6 @@ public class PetServiceImpl implements PetService{
         petToUpdate.setAge(petDto.getAge());
         petToUpdate.setRace(petDto.getRace());
         petToUpdate.setJoinedDate(petDto.getJoinedDate());
-        System.out.println(petDto.getJoinedDate());
         petRepository.save(petToUpdate);
 
         return petToUpdate;

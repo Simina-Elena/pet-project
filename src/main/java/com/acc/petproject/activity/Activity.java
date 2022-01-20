@@ -13,6 +13,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@ToString
 public class Activity {
     @Id
     @SequenceGenerator(name = "activity_seq", sequenceName = "activity_seq", allocationSize = 1)
@@ -27,4 +28,12 @@ public class Activity {
     private Shelter shelter;
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
+
+    public void increaseCapacity() {
+        capacity++;
+    }
+
+    public void decreaseCapacity() {
+        capacity--;
+    }
 }

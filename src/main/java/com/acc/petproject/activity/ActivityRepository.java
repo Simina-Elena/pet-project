@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
-    List<Activity> getAllByShelterId(Long shelterId);
+    List<Activity> getAllByShelterIdOrderById(Long shelterId);
 }

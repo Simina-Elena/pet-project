@@ -5,6 +5,7 @@ import com.acc.petproject.adoption.Adoption;
 import com.acc.petproject.donation.Donation;
 import com.acc.petproject.pet.Pet;
 import com.acc.petproject.review.Review;
+import com.acc.petproject.storage.Image;
 import com.acc.petproject.visitor.Address;
 import com.acc.petproject.security.model.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -37,8 +38,9 @@ public class Shelter {
             @AttributeOverride(name ="zip", column = @Column(name = "zip"))
     })
     private Address address;
-    @Column(length = 1000)
-    private String pictureLink;
+    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Image> pictures;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
