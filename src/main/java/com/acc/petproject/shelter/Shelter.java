@@ -5,7 +5,7 @@ import com.acc.petproject.adoption.Adoption;
 import com.acc.petproject.donation.Donation;
 import com.acc.petproject.pet.Pet;
 import com.acc.petproject.review.Review;
-import com.acc.petproject.storage.Image;
+import com.acc.petproject.storage.image.Image;
 import com.acc.petproject.visitor.Address;
 import com.acc.petproject.security.model.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;

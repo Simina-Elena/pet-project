@@ -1,12 +1,14 @@
 package com.acc.petproject.pet;
 
 import com.acc.petproject.shelter.Shelter;
+import com.acc.petproject.storage.image.Image;
 import com.acc.petproject.visitor.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,7 +19,9 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pet_seq")
     private Long id;
     private String name;
-    private String pictureLink;
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Image> pictures;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private String race;

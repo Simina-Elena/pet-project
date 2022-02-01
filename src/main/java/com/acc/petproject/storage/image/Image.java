@@ -1,5 +1,6 @@
-package com.acc.petproject.storage;
+package com.acc.petproject.storage.image;
 
+import com.acc.petproject.pet.Pet;
 import com.acc.petproject.shelter.Shelter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -26,10 +27,8 @@ public class Image {
     @JoinColumn(name = "shelter_id")
     @JsonIgnore
     private Shelter shelter;
-
-    public Image(String name) {
-        this.name = name;
-    }
-
-
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
+    @JsonIgnore
+    private Pet pet;
 }

@@ -34,7 +34,6 @@ public class PetServiceImpl implements PetService{
         pet1.setShelter(shelter.get());
         pet1.setAdopted(false);
         pet1.setDescription(pet.getDescription());
-        pet1.setPictureLink(pet.getPictureLink());
         pet1.setJoinedDate(LocalDate.now());
         pet1.setGender(pet.getGender());
         petRepository.save(pet1);
@@ -67,4 +66,5 @@ public class PetServiceImpl implements PetService{
     public Pet getPetByPetId(Long petId) {
         return petRepository.findById(petId).get();
     }
+
 }

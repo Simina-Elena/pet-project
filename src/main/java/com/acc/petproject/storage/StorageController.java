@@ -31,9 +31,9 @@ public class StorageController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "shelterId") Long shelterId) {
+    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "id") Long id) {
         System.out.println(file);
-        return new ResponseEntity<>(service.uploadFile(file, shelterId), HttpStatus.OK);
+        return new ResponseEntity<>(service.uploadFile(file, id), HttpStatus.OK);
     }
 
     @GetMapping("/download/{fileName}")

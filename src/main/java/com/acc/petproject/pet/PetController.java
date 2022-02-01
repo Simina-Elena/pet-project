@@ -41,4 +41,5 @@ public class PetController {
     public ResponseEntity<Pet> getPetByPetId(@PathVariable(value = "petId") Long petId) {
         return new ResponseEntity<>(petService.getPetByPetId(petId), HttpStatus.OK);
     }
+
 }
