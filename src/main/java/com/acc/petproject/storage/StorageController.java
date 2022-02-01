@@ -48,8 +48,13 @@ public class StorageController {
                 .body(resource);
     }
 
-    @DeleteMapping("/delete/{fileName}")
-    public ResponseEntity<String> deleteFile(@PathVariable String fileName) {
-        return new ResponseEntity<>(service.deleteFile(fileName), HttpStatus.OK);
+    @DeleteMapping("/delete-for-shelter/{fileName}")
+    public ResponseEntity<String> deleteFileForShelter(@PathVariable String fileName) {
+        return new ResponseEntity<>(service.deleteFileForShelter(fileName), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-for-pet/{fileName}")
+    public ResponseEntity<String> deleteFileForPet(@PathVariable String fileName) {
+        return new ResponseEntity<>(service.deleteFileForPet(fileName), HttpStatus.OK);
     }
 }

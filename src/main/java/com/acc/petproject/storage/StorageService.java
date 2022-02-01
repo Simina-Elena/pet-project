@@ -99,17 +99,19 @@ public class StorageService {
 
 
     @Transactional
-    public String deleteFile(String fileName) {
-        Image image = imageRepository.findByName(fileName);
-        if(image.getShelter().getId() != null) {
-            imageRepository.delete(image);
-            s3Client.deleteObject(bucketName, fileName);
-        } else {
-            imageRepository.delete(image);
-            s3Client.deleteObject(petBucketName, fileName);
-        }
+    public String deleteFileForShelter(String fileName) {
+        imageRepository.deleteByName(fileName);
+        s3Client.deleteObject(bucketName, fileName);
         return fileName + " removed ...";
     }
+
+    @Transactional
+    public String deleteFileForPet(String fileName) {
+        imageRepository.deleteByName(fileName);
+        s3Client.deleteObject(petBucketName, fileName);
+        return fileName + " removed ...";
+    }
+
 
     private File convertMultiPartFileToFile(MultipartFile file) {
         File convertedFile = new File(file.getOriginalFilename());
