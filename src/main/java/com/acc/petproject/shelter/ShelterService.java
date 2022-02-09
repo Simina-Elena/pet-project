@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface ShelterService {
     List<Shelter> getAllShelters();
     Shelter findShelterByUsername(String username);
+    Shelter updateShelterInfo(String username, Shelter updatedShelter);
 }

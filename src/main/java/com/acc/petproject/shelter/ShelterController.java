@@ -34,5 +34,9 @@ public class ShelterController {
         return ResponseEntity.ok(new MessageResponse("Log out successful!"));
     }
 
+    @PatchMapping("/profile-update/{username}")
+    public ResponseEntity<Shelter> updateShelterInfo(@PathVariable(value = "username") String username, @RequestBody Shelter updatedShelter) {
+        return new ResponseEntity<>(shelterService.updateShelterInfo(username, updatedShelter), HttpStatus.OK);
+    }
 
 }
