@@ -30,7 +30,6 @@ public class Visitor {
     private String phoneNumber;
     private Gender gender;
     private String birthDate;
-    //TODO: de verificat nume din doua
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name ="city", column = @Column(name = "city")),
