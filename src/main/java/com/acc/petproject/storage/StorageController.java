@@ -21,7 +21,7 @@ public class StorageController {
     private StorageService service;
 
     @GetMapping("/list")
-    public ResponseEntity<List<S3ObjectSummary>> getFile() {
+    public ResponseEntity<List<S3ObjectSummary>> getFiles() {
         return new ResponseEntity<>(service.getFiles(), HttpStatus.OK);
     }
 
