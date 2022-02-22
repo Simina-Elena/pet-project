@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-
 public class PetDto {
 
     @JsonProperty("id")

@@ -1,5 +1,6 @@
 package com.acc.petproject.shelter;
 
+import com.acc.petproject.adoption.Adoption;
 import com.acc.petproject.security.payload.response.MessageResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,5 +39,4 @@ public class ShelterController {
     public ResponseEntity<Shelter> updateShelterInfo(@PathVariable(value = "username") String username, @RequestBody Shelter updatedShelter) {
         return new ResponseEntity<>(shelterService.updateShelterInfo(username, updatedShelter), HttpStatus.OK);
     }
-
 }

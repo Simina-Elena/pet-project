@@ -10,4 +10,5 @@ import java.util.List;
 public interface AdoptionRepository extends JpaRepository<Adoption, Long> {
 
     List<Adoption> findAllByShelter(Shelter shelter);
+    Boolean existsByPetId(Long petId);
 }

@@ -5,6 +5,7 @@ import com.acc.petproject.adoption.Adoption;
 import com.acc.petproject.donation.Donation;
 import com.acc.petproject.review.Review;
 import com.acc.petproject.security.model.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,10 +41,13 @@ public class Visitor {
     })
     private Address address;
     @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Adoption> adoptions;
     @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Donation> donations;
     @OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Review> reviews;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "visitor_roles",
@@ -56,5 +60,9 @@ public class Visitor {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+    }
+
+    public void addAdoption(Adoption adoption) {
+        adoptions.add(adoption);
     }
 }

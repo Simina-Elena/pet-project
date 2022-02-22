@@ -1,5 +1,6 @@
 package com.acc.petproject.shelter;
 
+import com.acc.petproject.adoption.Adoption;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,5 +1,8 @@
 package com.acc.petproject.shelter;
 
+import com.acc.petproject.adoption.Adoption;
+import com.acc.petproject.adoption.AdoptionRepository;
+import com.acc.petproject.adoption.AdoptionStatus;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +16,7 @@ import java.util.Optional;
 public class ShelterServiceImpl implements ShelterService {
 
     private ShelterRepository shelterRepository;
+    private AdoptionRepository adoptionRepository;
 
     @Override
     public List<Shelter> getAllShelters() {
@@ -48,6 +52,8 @@ public class ShelterServiceImpl implements ShelterService {
         return currentShelter.get();
 
     }
+
+
 }
 
 
