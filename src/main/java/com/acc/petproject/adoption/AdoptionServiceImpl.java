@@ -58,4 +58,23 @@ public class AdoptionServiceImpl implements AdoptionService{
         }
         return adoption.get();
     }
+
+    @Override
+    public Adoption declineAdoption(Long adoptionId) {
+        Optional<Adoption> adoption = adoptionRepository.findById(adoptionId);
+        if(adoption.isPresent()) {
+            adoption.get().setAdoptionStatus(AdoptionStatus.DECLINED);
+            adoption.get().setShelter(adoption.get().getShelter());
+            adoption.get().setVisitor(adoption.get().getVisitor());
+            adoption.get().setPet(adoption.get().getPet());
+            if(petRepository.findById(adoption.get().getPet().getId()).get().isAdopted()) {
+                petRepository.findById(adoption.get().getPet().getId()).get().setAdopted(false);
+                visitorRepository.findByUsername(adoption.get().getVisitor().getUsername()).get().removeAdoption(adoption.get());
+            }
+            adoptionRepository.save(adoption.get());
+        }
+        return adoption.get();
+    }
+
+
 }

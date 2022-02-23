@@ -19,8 +19,7 @@ public class PetServiceImpl implements PetService{
 
     @Override
     public List<Pet> getAllPetsByShelterId(Long shelterId) {
-        Shelter shelter = shelterRepository.getById(shelterId);
-        return petRepository.findAllByShelter(shelter);
+        return petRepository.findAllByShelterIdAndAdoptedIsFalse(shelterId);
     }
 
     @Override

@@ -31,4 +31,9 @@ public class AdoptionController {
     public ResponseEntity<Adoption> acceptAdoption(@RequestParam(value = "adoptionId") Long adoptionId) {
         return new ResponseEntity<>(adoptionService.acceptAdoption(adoptionId), HttpStatus.OK);
     }
+
+    @PatchMapping("/decline-adoption")
+    public ResponseEntity<Adoption> declineAdoption(@RequestParam(value = "adoptionId") Long adoptionId) {
+        return new ResponseEntity<>(adoptionService.declineAdoption(adoptionId), HttpStatus.OK);
+    }
 }

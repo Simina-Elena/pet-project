@@ -65,4 +65,5 @@ public class Visitor {
     public void addAdoption(Adoption adoption) {
         adoptions.add(adoption);
     }
+    public void removeAdoption(Adoption adoption) {adoptions.remove(adoption);}
 }
