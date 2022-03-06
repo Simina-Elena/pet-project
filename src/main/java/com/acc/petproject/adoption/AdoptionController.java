@@ -16,9 +16,15 @@ import java.util.List;
 public class AdoptionController {
     private AdoptionService adoptionService;
 
-    @GetMapping()
+    @GetMapping("/byShelter")
     public List<Adoption> getAllAdoptionsByShelterId(@RequestParam(value = "shelterId") Long shelterId) {
         return adoptionService.getAllAdoptionsByShelterId(shelterId);
+    }
+
+    @GetMapping("/byVisitor")
+    public List<Adoption> getAllAdoptionsByVisitorId(@RequestParam(value = "visitorId") Long visitorId) {
+        System.out.println(adoptionService.getAllAdoptionsByVisitorId(visitorId));
+        return adoptionService.getAllAdoptionsByVisitorId(visitorId);
     }
 
     @PostMapping()

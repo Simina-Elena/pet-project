@@ -27,6 +27,12 @@ public class AdoptionServiceImpl implements AdoptionService{
     }
 
     @Override
+    public List<Adoption> getAllAdoptionsByVisitorId(Long visitorId) {
+        Visitor visitor = visitorRepository.getById(visitorId);
+        return adoptionRepository.findAllByVisitorAndAdoptionStatus_Accepted(visitor);
+    }
+
+    @Override
     public Adoption adopt(AdoptionDto adoptionDto) {
         Optional<Pet> pet = petRepository.findById(adoptionDto.getPetId());
         Optional<Shelter> shelter = shelterRepository.findById(pet.get().getShelter().getId());

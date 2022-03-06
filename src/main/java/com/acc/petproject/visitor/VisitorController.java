@@ -15,8 +15,8 @@ public class VisitorController {
 
     private VisitorService visitorService;
 
-    @GetMapping(path="/profile/{username}")
-    public ResponseEntity<Visitor> getVisitorProfile(@PathVariable(value= "username") String username) {
+    @GetMapping(path="/profile")
+    public ResponseEntity<Visitor> getVisitorProfile(@RequestParam(value= "username") String username) {
         return new ResponseEntity<>(visitorService.findVisitorByUsername(username), HttpStatus.OK);
     }
 }

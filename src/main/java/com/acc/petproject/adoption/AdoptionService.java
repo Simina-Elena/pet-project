@@ -8,6 +8,7 @@ import java.util.List;
 public interface AdoptionService {
 
     List<Adoption> getAllAdoptionsByShelterId(Long shelterId);
+    List<Adoption> getAllAdoptionsByVisitorId(Long visitorId);
     Adoption adopt(AdoptionDto adoptionDto);
     Adoption acceptAdoption(Long adoptionId);
     Adoption declineAdoption(Long adoptionId);

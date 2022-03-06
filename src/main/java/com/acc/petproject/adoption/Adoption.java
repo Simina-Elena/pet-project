@@ -24,6 +24,7 @@ public class Adoption {
     private Visitor visitor;
     @OneToOne
     private Pet pet;
+    @Enumerated(EnumType.STRING)
     private AdoptionStatus adoptionStatus;
     @ManyToOne
     @JsonIgnore

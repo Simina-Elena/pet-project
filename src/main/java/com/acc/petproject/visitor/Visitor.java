@@ -29,6 +29,7 @@ public class Visitor {
     private String email;
     private String password;
     private String phoneNumber;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private String birthDate;
     @Embedded
