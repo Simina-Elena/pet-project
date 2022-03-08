@@ -19,4 +19,9 @@ public class VisitorController {
     public ResponseEntity<Visitor> getVisitorProfile(@RequestParam(value= "username") String username) {
         return new ResponseEntity<>(visitorService.findVisitorByUsername(username), HttpStatus.OK);
     }
+
+    @PatchMapping(path = "/profile-update/{username}")
+    public ResponseEntity<Visitor> updateVisitorInfo(@PathVariable(value = "username") String username, @RequestBody Visitor updatedVisitor) {
+        return new ResponseEntity<>(visitorService.updateVisitorInfo(username, updatedVisitor), HttpStatus.OK);
+    }
 }
