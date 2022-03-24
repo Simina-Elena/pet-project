@@ -36,4 +36,5 @@ public class Activity {
     public void decreaseCapacity() {
         capacity--;
     }
+
 }

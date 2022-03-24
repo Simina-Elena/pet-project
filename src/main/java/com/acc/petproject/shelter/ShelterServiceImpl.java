@@ -32,6 +32,7 @@ public class ShelterServiceImpl implements ShelterService {
     @Override
     public Shelter updateShelterInfo(String username, Shelter updatedShelter) {
         Optional<Shelter> currentShelter = shelterRepository.findByUsername(username);
+        System.out.println(updatedShelter.getJoinedDate() + " joined date");
         if(currentShelter.isPresent()) {
             currentShelter.get().setUsername(updatedShelter.getUsername());
             currentShelter.get().setEmail(updatedShelter.getEmail());

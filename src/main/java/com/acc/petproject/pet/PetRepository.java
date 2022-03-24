@@ -12,4 +12,5 @@ public interface PetRepository extends JpaRepository<Pet, Long> {
 
     @Query(value = "SELECT * FROM pet WHERE shelter_id=?1 AND is_adopted=false", nativeQuery = true)
     List<Pet> findAllByShelterIdAndAdoptedIsFalse(Long shelterId);
+    List<Pet> findAllByShelter(Shelter shelter);
 }

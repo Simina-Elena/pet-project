@@ -17,7 +17,11 @@ public class PetController {
 
     @GetMapping(value = "/list/{shelterId}")
     public List<Pet> getAllPetsByShelterId(@PathVariable(value = "shelterId") Long shelterId) {
-        return petService.getAllPetsByShelterId(shelterId);
+        return petService.getAllPetsUnadoptedByShelterId(shelterId);
+    }
+    @GetMapping(value = "/list-all/{shelterId}")
+    public List<Pet> getAllByShelterId(@PathVariable(value = "shelterId") Long shelterId) {
+        return petService.getAllPets(shelterId);
     }
 
     @PostMapping(value = "/add/{shelterId}")

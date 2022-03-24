@@ -18,8 +18,13 @@ public class PetServiceImpl implements PetService{
     private final ShelterRepository shelterRepository;
 
     @Override
-    public List<Pet> getAllPetsByShelterId(Long shelterId) {
+    public List<Pet> getAllPetsUnadoptedByShelterId(Long shelterId) {
         return petRepository.findAllByShelterIdAndAdoptedIsFalse(shelterId);
+    }
+
+    @Override
+    public List<Pet> getAllPets(Long shelterId) {
+        return petRepository.findAllByShelter(shelterRepository.getById(shelterId));
     }
 
     @Override
@@ -51,6 +56,7 @@ public class PetServiceImpl implements PetService{
         petToUpdate.setAge(petDto.getAge());
         petToUpdate.setRace(petDto.getRace());
         petToUpdate.setJoinedDate(petDto.getJoinedDate());
+        petToUpdate.setAdopted(petToUpdate.isAdopted());
         petRepository.save(petToUpdate);
 
         return petToUpdate;
